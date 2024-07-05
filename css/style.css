@@ -1,0 +1,676 @@
+body {
+    background-color: #222;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 10vh;
+    margin: 0;
+}
+
+textarea {
+    caret-color: #007bff; /* Define a cor do cursor para vermelho */
+    resize: both; /* Permite redimensionamento em ambos os eixos (horizontal e vertical) */
+    overflow: auto; /* Adiciona barras de rolagem conforme necessário */
+}
+
+textarea::selection {
+    background-color: #ffffff; /* Cor de fundo do texto selecionado */
+    color: #000; /* Cor do texto selecionado */
+}
+
+h1 {
+    font-size: 3vh;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 80vw;
+    flex: 1;
+    padding-top: 20px;
+    box-sizing: border-box;
+    position: relative; /* Permite sobreposição */
+    z-index: 0; /* Eleva o texto para estar acima da barra lateral */
+}
+
+.inputContainer {
+    position: relative;
+    width: 100%;
+    margin: 1vh 0;
+}
+
+.inputLabel {
+    position: absolute;
+    top: -1.8vh;
+    left: 0vh;
+    padding: 0 1vw;
+    font-size: 1.5vh;
+    color: #ffffff;
+}
+
+.inputLabel:focus {
+    position: absolute;
+    top: -1.8vh;
+    left: 0vh;
+    background-color: #333;
+    padding: 0 1vw;
+    font-size: 1.5vh;
+    color: #bda9af;
+    border-bottom: 0.3vh solid #ad6969;
+}
+
+#textInput, #regexInput, #resultLabel {
+    background-color: #555;
+    border: 0.3vh solid #204594;
+    border-radius: 2.1vh;
+    padding: 0.5vh;
+    width: 100%;
+    max-width: calc(100vw - 4vw); /* Ajuste para bordas */
+    resize: vertical;
+    overflow: auto;
+    text-align: center;
+    box-sizing: border-box; /* Inclui padding e bordas na largura */
+    color: #ffffff;
+}
+
+#textInput {
+    min-height: 10vh;
+    font-size: 1.5vh;
+}
+
+#regexInput {
+    font-size: 3vh;
+    height: auto;
+    min-height: 10vh;
+    letter-spacing: -0.2vw; /* Reduz o espaçamento entre as letras */
+}
+
+#resultLabel {
+    font-size: 2.2vh;
+    margin-bottom: 3vh;
+    min-height: 10vh;
+}
+
+#textInput:focus, #regexInput:focus, #resultLabel:focus {
+    border-color: #007bff; /* Cor azul ao focar */
+    outline: none; /* Remove o outline padrão */
+}
+
+.menuBar {
+    position: fixed;
+    bottom: 0;
+    height: 12vh;
+    background-color: #444;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vh 3vw;
+    box-sizing: border-box;
+    gap: 25vw;
+    z-index: 3; /* Eleva o menu para estar acima do texto */
+    display: flex;
+    justify-content: center; /* Centraliza os botões verticalmente */
+    align-items: center; /* Alinha os botões ao centro horizontalmente */
+    border-radius: 8vh 8vh 0 0;
+}
+
+.button, .downloadButton, .buttonBlue {
+    border-radius: 3vh;
+    padding: 1vh 3vw;
+    width: 18vh;
+    margin: 1vh 0;
+    cursor: pointer;
+    font-size: 2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    background-color: #ff4081;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #ff79a1;
+}
+
+.button:active {
+    box-shadow: 0 1vh 1.5vh rgba(0, 0, 0, 0.3);
+}
+
+.downloadButton {
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 2vh;
+}
+
+.downloadButton svg {
+    margin-right: 0.5vw;
+}
+
+.downloadButton:hover {
+    background-color: #e0e0e0;
+}
+
+.svg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* O contêiner pode se ajustar ao tamanho da tela */
+}
+
+.fixed-svg {
+    height: 2vh; /* Altura fixa do SVG */
+}
+
+.buttonBlue {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.buttonBlue:hover {
+    background-color: #0056b3;
+}
+
+.buttonBlue:active {
+    box-shadow: 0 1vh 1.5vh rgba(0, 0, 0, 0.3);
+}
+
+.sidebar {
+    width: 80vw;
+    height: 88vh;
+    background-color: #333;
+    border-right: 1px solid #ccc;
+    transition: transform 0.3s ease;
+    transform: translateX(-100%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2; /* Eleva o menu para estar acima do texto */
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Cor da barra lateral */
+    z-index: 1; /* Coloca a barra lateral abaixo do menu */
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.tcontainer {
+    display: grid;
+    grid-auto-flow: column;
+    border: 0.3vh solid #204594;
+    border-radius: 2.1vh 2.1vh 0 0;
+    padding: 1vh;
+    grid-template-columns: repeat(20, 12vh);
+    grid-template-rows: repeat(3, 6vh);
+    gap: 0.5vh;
+    width: 100%;
+    max-width: 75vw; /* Largura máxima para 12 colunas de 60px cada */
+    margin: auto; /* Centralizar a tabela na página */
+    overflow-y: auto; /* Adicionar barra de rolagem vertical quando necessário */
+    max-height: 30vh; /* Defina uma altura máxima para mostrar a barra de rolagem vertical */
+    margin-bottom: 25vh;
+    
+}
+.item {
+    border-radius: 2.1vh;
+    padding: 8px;
+    margin: 0 1px 0 1px;
+    text-align: center;
+    display: flex; /* Para alinhar conteúdo verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+}
+.header {
+    background-color: #4e4e4e;
+    font-weight: bold;
+    padding: 8px;
+    text-align: center;
+    display: flex; /* Para alinhar conteúdo verticalmente */
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center; /* Alinha verticalmente */
+}
+
+.header:first-child {
+    grid-column: span 4; /* Span de 4 colunas para o primeiro item de cabeçalho */
+}
+
+button.item {
+    background-color: #000000;
+    color: #fff;
+    cursor: pointer;
+    font-size: 2.5vh;
+}
+
+button.item:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+button.item:active {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.regexCommand {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.regexCommand:hover {
+    text-decoration: underline;
+}
+
+.container {
+    display: flex;
+}
+
+
+@media (max-aspect-ratio: 4/9) {
+    .tcontainer{
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+    }
+
+    .sidebar{
+        height: 76vh;
+        width: 90vw;
+    }
+
+    .menuBar {
+        justify-content: space-around; /* Distribui os botões uniformemente */
+        gap: 0; /* Remove o espaço entre os botões no layout horizontal */
+        flex-direction: column;
+        align-items: center;
+        height: 24vh;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .downloadButton {
+        margin-bottom: 15px;
+    }
+
+    .buttonBlue{
+        margin-bottom: 15px;
+    }
+
+    .button{
+        margin-bottom: 10px;
+    }
+    
+}
+
+@media (min-aspect-ratio: 4/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 50vw;
+    }
+
+    .menuBar {
+        height: 8vh;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .downloadButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15vh;
+    }
+
+    .button {
+        width: 12vh;
+    }
+    .buttonBlue {
+        width: 12vh;
+    }
+}
+
+@media (min-aspect-ratio: 5/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 50vw;
+    }
+
+    .menuBar {
+        height: 8vh;
+        flex-direction: row;
+        justify-content: space-between;
+        border-radius: 0;
+        width: 100%;
+    }
+
+    .downloadButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 15vh;
+    }
+
+    .button {
+        width: 12vh;
+    }
+    .buttonBlue {
+        width: 12vh;
+    }
+}
+
+@media (min-aspect-ratio: 7/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 50vw;
+    }
+
+    .menuBar {
+        height: 8vh;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .downloadButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    
+    
+}
+
+@media (min-aspect-ratio: 9/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+    }
+
+    .main {
+        max-width: 75vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 50vw;
+    }
+
+    .menuBar{
+        flex-direction: row;
+        justify-content: space-between;
+        height: 8vh;
+    }
+
+    .downloadButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-aspect-ratio: 12/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        width: 70vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+    }
+
+    .main {
+        max-width: 66vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 50vw;
+    }
+
+    .menuBar{
+        flex-direction: row;
+        justify-content: space-between;
+        height: 8vh;
+    }
+
+    .downloadButton {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        max-width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+        border: none;
+    }
+
+    .main {
+        max-width: 66vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 25vw;
+    }
+
+    .menuBar{
+        flex-direction: row;
+        justify-content: space-between;
+        height: 8vh;
+    }
+
+    .downloadButton {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-aspect-ratio: 18/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        max-width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+        border: none;
+    }
+
+    .main {
+        max-width: 66vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 25vw;
+    }
+
+    .menuBar{
+        flex-direction: row;
+        justify-content: space-between;
+        height: 8vh;
+    }
+
+    .downloadButton {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-aspect-ratio: 22/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        max-width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+        border: none;
+    }
+
+    .main {
+        max-width: 66vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 25vw;
+    }
+
+    .menuBar{
+        height: 8vh;
+    }
+
+    .downloadButton {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .buttonBlue{
+        margin-left: 40vw;
+    }
+
+    .button{
+        margin-right: 40vw;
+    }
+}
+
+@media (min-aspect-ratio: 27/9) {
+    .tcontainer{
+        grid-template-columns: repeat(12, 12vh);
+        grid-template-rows: repeat(5, 6vh);
+        padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
+        max-width: 75vw;
+        max-height: 35vh;
+        margin-bottom: 12.5vh;
+        border: none;
+    }
+
+    .main {
+        max-width: 66vw;
+    }
+
+    .sidebar{
+        height: 92vh;
+        width: 25vw;
+    }
+
+    .menuBar{
+        height: 8vh;
+    }
+
+    .downloadButton {
+        margin-bottom: 15px;
+    }
+
+    .buttonBlue{
+        margin-left: 25vw;
+    }
+
+    .button{
+        margin-right: 25vw;
+    }
+}
+
+/* Estiliza o botão de redimensionamento para WebKit */
+textarea::-webkit-resizer, #resultLabel::-webkit-resizer {
+    background: url('resizer.svg') no-repeat center;
+    width: 25px; /* Ajuste conforme necessário */
+    height: 25px; /* Ajuste conforme necessário */
+    cursor: nwse-resize; /* Define o cursor para redimensionamento diagonal */
+}
+
+/* Estiliza o botão de redimensionamento para Firefox */
+textarea::-moz-resizer, #resultLabel::-moz-resizer {
+    background: url('resizer.svg') no-repeat center;
+    width: 25px; /* Ajuste conforme necessário */
+    height: 25px; /* Ajuste conforme necessário */
+    cursor: nwse-resize; /* Define o cursor para redimensionamento diagonal */
+}
+
+
+/* Para navegadores baseados em Mozilla, como Firefox */
+.tcontainer {
+    scrollbar-color: #214eca #2e2e2e; /* Cor da barra e cor do fundo */
+}
+
+.tcontainer:hover {
+    scrollbar-color: #214eca #2e2e2e; /* Cor da barra e cor do fundo */
+}
+
+.tcontainer::-webkit-scrollbar-thumb {
+    background-color: #204594; /* Cor da barra de rolagem */
+}
+
+/* Para navegadores baseados em WebKit, como Chrome/Safari */
+.tcontainer::-webkit-scrollbar {
+    width: 2vw;
+    height: 2vh;
+}
+
+.tcontainer::-webkit-scrollbar-thumb:hover {
+    background-color: #ff79a1; /* Cor da barra de rolagem ao passar o mouse */
+}

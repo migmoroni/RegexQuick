@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="version" content="0.9.00"><!--.0.00.000-->
+    <meta name="title" content="Regex Quick">
+    <meta name="author" content="Miguel Eduardo Senna Moroni - migmoroni" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="css/style.css">
+    
+    <title>Real-Time Text Analysis with Regex</title>
+</head>
+<body>
+    <main class="main">
+        <h1>Regex Quick Test</h1>
+        <form class="inputContainer">
+            <label class="inputLabel" for="textInput">Insira seu texto</label>
+            <textarea id="textInput" name="textInput"></textarea>
+        </form>
+        <form class="inputContainer">
+            <label class="inputLabel" for="regexInput">Insira seu regex</label>
+            <textarea id="regexInput" name="regexInput"></textarea>
+        </form>
+        <div class="inputContainer">
+            <label class="inputLabel" for="resultLabel">Veja sua expressão</label>
+            <div id="resultLabel"></div>
+        </div>
+    </main>
+    <div class="tcontainer-cont">
+        <div class="tcontainer">
+            <!--<div class="header">Comando</div>-->
+            
+            <button class="item regexCommand" title="Barra">/</button>
+            <button class="item regexCommand" title="Caractere de escape">\</button>
+            <button class="item regexCommand" title="Qualquer caractere">.</button>
+            <button class="item regexCommand" title="Início da linha">^</button>
+            <button class="item regexCommand" title="Fim da linha">$</button>
+
+            <button class="item regexCommand" title="Zero ou mais ocorrências">*</button>
+            <button class="item regexCommand" title="Uma ou mais ocorrências">+</button>
+            <button class="item regexCommand" title="Zero ou uma ocorrência">?</button>
+            <button class="item regexCommand" title="Ou">|</button>
+            <button class="item regexCommand" title="Barra invertida literal">\\</button>
+
+            <button class="item regexCommand" title="Dígito">\d</button>
+            <button class="item regexCommand" title="Não dígito">\D</button>
+            <button class="item regexCommand" title="Palavra">\w</button>
+            <button class="item regexCommand" title="Não palavra">\W</button>
+            <button class="item regexCommand" title="Espaço em branco">\s</button>
+
+            <button class="item regexCommand" title="Não espaço em branco">\S</button>
+            <button class="item regexCommand" title="Limite de palavra">\b</button>
+            <button class="item regexCommand" title="Não limite de palavra">\B</button>
+            <button class="item regexCommand" title="Nova linha">\n</button>
+            <button class="item regexCommand" title="Retorno de carro">\r</button>
+
+            <button class="item regexCommand" title="Tabulação">\t</button>
+            <button class="item regexCommand" title="Alimentação de formulário">\f</button>
+            <button class="item regexCommand" title="Tabulação vertical">\v</button>
+            <button class="item regexCommand" title="Nulo">\0</button>
+            <button class="item regexCommand" title="Referências retroativas">\1</button>
+
+            <button class="item regexCommand" title="Referências retroativas">\2</button>
+            <button class="item regexCommand" title="Caractere de controle">\cx</button>
+            <button class="item regexCommand" title="Propriedades Unicode">\p{...}</button>
+            <button class="item regexCommand" title="Negação de propriedades Unicode">\P{...}</button>
+            <button class="item regexCommand" title="Unicode code point">\u{...}</button>
+
+            <button class="item regexCommand" title="Agrupamento sem captura">(?:)</button>
+            <button class="item regexCommand" title="Lookahead positivo">(?=...)</button>
+            <button class="item regexCommand" title="Lookahead negativo">(?!...)</button>
+            <button class="item regexCommand" title="Lookbehind positivo">(?&lt;=...)</button>
+            <button class="item regexCommand" title="Lookbehind negativo">(?&lt;!...)</button>
+
+            <button class="item regexCommand" title="Comentário">(?#...)</button>
+            <button class="item regexCommand" title="Alternância no mesmo grupo">(?|...)</button>
+            <button class="item regexCommand" title="Modo multi-linha (flag m)">(?m)</button>
+            <button class="item regexCommand" title="Modo sem distinção entre maiúsculas e minúsculas (usado com flag i)">(?i)</button>
+            <button class="item regexCommand" title="Limite de palavra à esquerda">[[:&lt;:]]</button>
+
+            <button class="item regexCommand" title="Limite de palavra à direita">[[:>:]]</button>
+            <button class="item regexCommand" title="Intervalo de caracteres">[.-.]</button>
+            <button class="item regexCommand" title="Qualquer caractere dentro dos colchetes">[abc]</button>
+            <button class="item regexCommand" title="Qualquer caractere que não esteja dentro dos colchetes">[^abc]</button>
+            <button class="item regexCommand" title="Numeros de 0 a 9">[0-9]</button>
+
+            <button class="item regexCommand" title="Não Numeros de 0 a 9">[^0-9]</button>
+            <button class="item regexCommand" title="Correspondência de dígitos">\d{4}</button>
+            <button class="item regexCommand" title="Quantificador de ocorrência (3 a 5 dígitos)">\d{3,5}</button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+
+            <button class="item regexCommand" title="Não Numeros de 0 a 9"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+
+            <button class="item regexCommand" title="Não Numeros de 0 a 9"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="text"></button>
+        </div>
+    </div>
+    <nav class="menuBar">
+        <button class="downloadButton" id="downloadButton">
+            <div class="svg-container">
+                <svg class="fixed-svg" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C8.55228 0 9 0.447715 9 1V9.58579L11.2929 7.29289C11.6834 6.90237 12.3166 6.90237 12.7071 7.29289C13.0976 7.68342 13.0976 8.31658 12.7071 8.70711L8.70711 12.7071C8.31658 13.0976 7.68342 13.0976 7.29289 12.7071L3.29289 8.70711C2.90237 8.31658 2.90237 7.68342 3.29289 7.29289C3.68342 6.90237 4.31658 6.90237 4.70711 7.29289L7 9.58579V1C7 0.447715 7.44772 0 8 0ZM1 14C1 13.4477 1.44772 13 2 13H14C14.5523 13 15 13.4477 15 14C15 14.5523 14.5523 15 14 15H2C1.44772 15 1 14.5523 1 14Z" fill="#333"/>
+                </svg>
+            </div>
+            Download
+        </button>
+        <button class="buttonBlue" id="docsButton">Docs</button>
+        <button class="button" id="donateButton1">Donate</button>
+    </nav>
+
+    <div class="container">
+        <div class="sidebar">
+            <h2>Regex Commands</h2>
+            <ul>
+                <li>Beginning of string<a href="#" class="regexCommand">^</a></li>
+                <li><a href="#" class="regexCommand">$ - End of string</a></li>
+                <li><a href="#" class="regexCommand">* - Zero or more</a></li>
+                <li><a href="#" class="regexCommand">+ - One or more</a></li>
+                <li><a href="#" class="regexCommand">? - Zero or one</a></li>
+                <li><a href="#" class="regexCommand">[ ] - Character set</a></li>
+                <li><a href="#" class="regexCommand">{ } - Quantifier</a></li>
+                <li><a href="#" class="regexCommand">| - Alternation</a></li>
+                <li><a href="#" class="regexCommand">\ - Escape character</a></li>
+                <li><a href="#" class="regexCommand">( ) - Grouping</a></li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+<script src="js/code.js"></script>
+</html>
