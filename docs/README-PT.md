@@ -1,5 +1,7 @@
 # Ferramenta de Ajuda Regex
 
+[Versão em inglês](../README.md)
+
 ## Visão Geral
 
 A Ferramenta de Ajuda Regex é uma utilidade baseada na web projetada para ajudar desenvolvedores na construção de expressões regulares (regex). Esta ferramenta fornece uma interface interativa com uma grade de comandos regex comuns e suas descrições, facilitando a compreensão e construção de padrões regex complexos. A ferramenta é responsiva, acessível e inclui tooltips para orientação adicional.
@@ -14,7 +16,7 @@ A Ferramenta de Ajuda Regex é uma utilidade baseada na web projetada para ajuda
 
 ## Demonstração
 
-Você pode ver uma demonstração ao vivo da Ferramenta de Ajuda Regex [aqui](#).
+Você pode ver uma demonstração ao vivo da Ferramenta de Ajuda Regex aqui: [https://migmoroni.github.io/RegexQuick/](https://migmoroni.github.io/RegexQuick/).
 
 ## Instalação
 
@@ -22,12 +24,12 @@ Para começar a usar a Ferramenta de Ajuda Regex, siga estas etapas:
 
 1. **Clone o repositório**:
     ```sh
-    git clone https://github.com/seu-usuario/ferramenta-ajuda-regex.git
+    git clone https://github.com/migmoroni/regexquick.git
     ```
 
 2. **Navegue até o diretório do projeto**:
     ```sh
-    cd ferramenta-ajuda-regex
+    cd regexquick
     ```
 
 3. **Abra o `index.html` no seu navegador**:
