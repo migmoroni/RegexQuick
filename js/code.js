@@ -64,27 +64,38 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// Toggle sidebar
-docsButton.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-});
-
-// Toggle sidebar
-donateButton.addEventListener('click', () => {
-    sidebarDonate.classList.toggle('active');
-});
-
-// Handle regex command clicks
-const regexCommands = document.querySelectorAll('.regexCommand');
-regexCommands.forEach(command => {
-    command.addEventListener('click', (event) => {
-        event.preventDefault();
-        const commandText = command.textContent.trim();
-        const cursorPos = regexInput.selectionStart;
-        const regexValue = regexInput.value;
-        const newValue = regexValue.substring(0, cursorPos) + commandText + regexValue.substring(cursorPos);
-        regexInput.value = newValue;
-        regexInput.focus(); // Reposiciona o cursor no campo de texto
+    // Toggle sidebar
+    docsButton.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
     });
-});
+
+    // Toggle sidebar
+    donateButton.addEventListener('click', () => {
+        sidebarDonate.classList.toggle('active');
+    });
+
+    // Handle regex command clicks
+    const regexCommands = document.querySelectorAll('.regexCommand');
+
+    regexCommands.forEach(command => {
+        command.addEventListener('click', (event) => {
+            event.preventDefault();
+            const commandText = command.textContent.trim();
+            const startPos = regexInput.selectionStart;
+            const endPos = regexInput.selectionEnd;
+            const regexValue = regexInput.value;
+            
+            // Concatena o valor antes da seleção com o comando e o valor após a seleção
+            const newValue = regexValue.substring(0, startPos) + commandText + regexValue.substring(endPos);
+            regexInput.value = newValue;
+            
+            // Calcula a nova posição do cursor
+            const newCursorPos = startPos + commandText.length;
+            regexInput.setSelectionRange(newCursorPos, newCursorPos);
+            regexInput.focus();
+
+            // Atualiza o resultado após a modificação do regexInput
+            updateResult();
+        });
+    });
 });

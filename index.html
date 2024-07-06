@@ -15,26 +15,27 @@
     
     <title>Real-Time Text Analysis with Regex</title>
 </head>
+
 <body>
     <main class="main">
         <h1>Regex Quick Test</h1>
         <form class="inputContainer">
             <label class="inputLabel" for="textInput">Insira seu texto</label>
-            <textarea id="textInput" name="textInput"></textarea>
+            <textarea id="textInput" name="textInput" spellcheck="false"></textarea>
         </form>
         <form class="inputContainer">
             <label class="inputLabel" for="regexInput">Insira seu regex</label>
-            <textarea id="regexInput" name="regexInput"></textarea>
+            <textarea id="regexInput" name="regexInput" spellcheck="false"></textarea>
         </form>
         <div class="inputContainer">
             <label class="inputLabel" for="resultLabel">Veja sua expressão</label>
             <div id="resultLabel"></div>
         </div>
     </main>
+
     <div class="tcontainer-cont">
         <div class="tcontainer">
             <!--<div class="header">Comando</div>-->
-            
             <button class="item regexCommand" title="Barra">/</button>
             <button class="item regexCommand" title="Caractere de escape">\</button>
             <button class="item regexCommand" title="Qualquer caractere">.</button>
@@ -92,30 +93,32 @@
             <button class="item regexCommand" title="Não Numeros de 0 a 9">[^0-9]</button>
             <button class="item regexCommand" title="Correspondência de dígitos">\d{4}</button>
             <button class="item regexCommand" title="Quantificador de ocorrência (3 a 5 dígitos)">\d{3,5}</button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="Zero ou um (possessivo)">?+</button>
+            <button class="item regexCommand" title="Zero ou um (preguiçoso)">??</button>
 
-            <button class="item regexCommand" title="Não Numeros de 0 a 9"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="Zero ou mais (possessivo)">*+</button>
+            <button class="item regexCommand" title="Zero ou mais (preguiçoso)">*?</button>
+            <button class="item regexCommand" title="Um ou mais (possessivo)">++</button>
+            <button class="item regexCommand" title="Um ou mais (preguiçoso)">+?</button>
+            <button class="item regexCommand" title="Busca case-insensitive">i</button>
 
-            <button class="item regexCommand" title="Não Numeros de 0 a 9"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
-            <button class="item regexCommand" title="text"></button>
+            <button class="item regexCommand" title="Busca global">g</button>
+            <button class="item regexCommand" title="Busca em várias linhas">m</button>
+            <button class="item regexCommand" title="Ponto (.) corresponde a (\n)">s</button>
+            <button class="item regexCommand" title="Sequência Unicode">u</button>
+            <button class="item regexCommand" title="Busca 'pegajosa' que começa na posição do alvo da pesquisa">y</button>
         </div>
     </div>
     
     <nav class="menuBar">
         <button class="downloadButton" id="downloadButton">
+            <!--
             <div class="svg-container">
                 <svg class="fixed-svg" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C8.55228 0 9 0.447715 9 1V9.58579L11.2929 7.29289C11.6834 6.90237 12.3166 6.90237 12.7071 7.29289C13.0976 7.68342 13.0976 8.31658 12.7071 8.70711L8.70711 12.7071C8.31658 13.0976 7.68342 13.0976 7.29289 12.7071L3.29289 8.70711C2.90237 8.31658 2.90237 7.68342 3.29289 7.29289C3.68342 6.90237 4.31658 6.90237 4.70711 7.29289L7 9.58579V1C7 0.447715 7.44772 0 8 0ZM1 14C1 13.4477 1.44772 13 2 13H14C14.5523 13 15 13.4477 15 14C15 14.5523 14.5523 15 14 15H2C1.44772 15 1 14.5523 1 14Z" fill="#333"/>
                 </svg>
             </div>
+            -->
             Download
         </button>
         <button class="buttonBlue" id="docsButton">Docs</button>
@@ -153,17 +156,15 @@
             </ul>
             <ul>
                 <h3>
-                    Donate
-                    <p>Buy Me a Coffee</p>
+                    Donate<br>
+                    <a href="https://buymeacoffee.com/migmoroni">Buy me a coffee!</a>
                     <p>Patreon</p>
-                    <p></p>
+                    <p>plataforma brasileira</p>
                 </h3>
             </ul>
         </div>
     </div>
 
-
-    
 </body>
 <script src="js/code.js"></script>
 </html>
