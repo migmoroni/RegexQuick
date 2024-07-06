@@ -4,7 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultLabel = document.getElementById('resultLabel');
     const downloadButton = document.getElementById('downloadButton');
     const docsButton = document.getElementById('docsButton');
+    const donateButton = document.getElementById('donateButton');
     const sidebar = document.querySelector('.sidebar');
+    const sidebarDonate = document.querySelector('.sidebarDonate');
 
     // Parâmetros para o texto e a regex de exemplo
     const exampleRegex = /\b\w{4}\b/g;
@@ -62,9 +64,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Toggle sidebar
+// Toggle sidebar
 docsButton.addEventListener('click', () => {
     sidebar.classList.toggle('active');
+});
+
+// Toggle sidebar
+donateButton.addEventListener('click', () => {
+    sidebarDonate.classList.toggle('active');
 });
 
 // Handle regex command clicks
