@@ -25,10 +25,6 @@ h1 {
     font-size: 3vh;
 }
 
-address {
-
-}
-
 .main {
     display: flex;
     flex-direction: column;
@@ -249,6 +245,56 @@ address {
     z-index: 2; /* Coloca a barra lateral abaixo do menu */
 }
 
+.sidebarDonate h2,
+.sidebarDonate h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.sidebarDonate a {
+    color: #1e90ff; /* Azul */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sidebarDonate a:hover {
+    text-decoration: underline;
+}
+
+.sidebarDonate a img {
+    margin-right: 8px;
+    width: 4vh; /* Aumenta o tamanho dos ícones */
+    height: 4vh;
+    filter: invert(32%) sepia(100%) saturate(2070%) hue-rotate(184deg) brightness(101%) contrast(101%); /* Aplica a cor azul */
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.grid-container a img {
+    margin-right: 0; /* Remove o margin-right dos ícones na grid */
+    width: 4vh; /* Aumenta o tamanho dos ícones */
+    height: 4vh;
+}
+
+.sidebarDonate address {
+    margin-bottom: 20px;
+}
+
+.sidebarDonate ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebarDonate li {
+    margin-bottom: 10px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
@@ -450,7 +496,7 @@ button.item:active {
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 48vw;
+        width: 40vw;
     }
 
     .menuBar {
@@ -475,18 +521,18 @@ button.item:active {
         grid-template-columns: repeat(12, 12vh);
         grid-template-rows: repeat(5, 6vh);
         padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
-        width: 75vw;
+        max-width: 80vw;
         max-height: 35vh;
         margin-bottom: 12.5vh;
     }
 
     .main {
-        max-width: 75vw;
+        max-width: 70vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 48vw;
+        width: 30vw;
     }
 
     .menuBar{
@@ -509,18 +555,18 @@ button.item:active {
         grid-template-columns: repeat(12, 12vh);
         grid-template-rows: repeat(5, 6vh);
         padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
-        width: 70vw;
+        max-width: 80vw;
         max-height: 35vh;
         margin-bottom: 12.5vh;
     }
 
     .main {
-        max-width: 66vw;
+        max-width: 50vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 48vw;
+        width: 25vw;
     }
 
     .menuBar{
@@ -542,18 +588,18 @@ button.item:active {
         grid-template-columns: repeat(12, 12vh);
         grid-template-rows: repeat(5, 6vh);
         padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
-        max-width: 60vw;
+        max-width: 80vw;
         max-height: 35vh;
         margin-bottom: 12.5vh;
     }
 
     .main {
-        max-width: 66vw;
+        max-width: 50vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 25vw;
+        width: 20vw;
     }
 
     .menuBar{
@@ -574,18 +620,18 @@ button.item:active {
         grid-template-columns: repeat(12, 12vh);
         grid-template-rows: repeat(5, 6vh);
         padding-bottom: 1vh; /* Afasta a barra de rolagem do conteúdo */
-        max-width: 60vw;
+        max-width: 70vw;
         max-height: 35vh;
         margin-bottom: 12.5vh; 
     }
 
     .main {
-        max-width: 66vw;
+        max-width: 45vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 25vw;
+        width: 18vw;
     }
 
     .menuBar{
@@ -613,12 +659,12 @@ button.item:active {
     }
 
     .main {
-        max-width: 66vw;
+        max-width: 40vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 25vw;
+        width: 15vw;
     }
 
     .menuBar{
@@ -651,12 +697,12 @@ button.item:active {
     }
 
     .main {
-        max-width: 66vw;
+        max-width: 35vw;
     }
 
     .sidebar, .sidebarDonate{
         height: 92vh;
-        width: 25vw;
+        width: 12vw;
     }
 
     .menuBar{
@@ -678,7 +724,7 @@ button.item:active {
 
 /* Estiliza o botão de redimensionamento para WebKit */
 textarea::-webkit-resizer, #resultLabel::-webkit-resizer {
-    background: url('resizer.svg') no-repeat center;
+    background: url('../svg/resizer.svg') no-repeat center;
     width: 25px; /* Ajuste conforme necessário */
     height: 25px; /* Ajuste conforme necessário */
     cursor: nwse-resize; /* Define o cursor para redimensionamento diagonal */
@@ -686,7 +732,7 @@ textarea::-webkit-resizer, #resultLabel::-webkit-resizer {
 
 /* Estiliza o botão de redimensionamento para Firefox */
 textarea::-moz-resizer, #resultLabel::-moz-resizer {
-    background: url('resizer.svg') no-repeat center;
+    background: url('../svg/resizer.svg') no-repeat center;
     width: 25px; /* Ajuste conforme necessário */
     height: 25px; /* Ajuste conforme necessário */
     cursor: nwse-resize; /* Define o cursor para redimensionamento diagonal */
