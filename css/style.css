@@ -263,7 +263,7 @@ h1 {
     text-decoration: underline;
 }
 
-.sidebarDonate a img {
+.svg-ad {
     margin-right: 8px;
     width: 4vh; /* Aumenta o tamanho dos ícones */
     height: 4vh;
