@@ -25,6 +25,54 @@ h1 {
     font-size: 3vh;
 }
 
+.language-selector {
+    text-align: right;
+    position: absolute;
+    top: 1vh;
+    right: 1vh;
+    z-index: 2;
+}
+
+.language-selector summary {
+    cursor: pointer;
+    outline: none;
+}
+
+.language-selector ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(59, 150, 255, 0.2);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+}
+
+.language-selector ul li {
+    padding: 1vh;
+    border-top: 1px solid #ccc;
+    text-align: right;
+}
+
+.language-selector ul li:last-child {
+    border-bottom: none;
+}
+
+.language-selector ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+.language-selector ul li a:hover {
+    background-color: #e5e5e5;
+}
+
+.language-selector.open ul {
+    display: block;
+}
+
 .main {
     display: flex;
     flex-direction: column;
